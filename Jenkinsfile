@@ -17,6 +17,10 @@ try {
 node {
 stage '\u2776 Stage 1'
 echo "\u2600 BUILD_URL=${env.BUILD_URL}"
+sh('git describe')
+sh('git describe > GIT_COMMIT')
+git_commit=readFile('GIT_COMMIT')
+echo "\u2600 ${git_commit}"
  
 def workspace = pwd()
 echo "\u2600 workspace=${workspace}"
